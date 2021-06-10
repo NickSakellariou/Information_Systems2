@@ -252,6 +252,7 @@ def search_products(uuid):
                         if name in product['name']:
                             product['_id'] = str(product['_id'])
                             product['price'] = str(product['price']) + " €"
+                            del product['stock']
                             output.append(product)
 
                     if output != []:
@@ -266,6 +267,7 @@ def search_products(uuid):
                         if category == product['category']:
                             product['_id'] = str(product['_id'])
                             product['price'] = str(product['price']) + " €"
+                            del product['stock']
                             output.append(product)
 
                     if output != []:
@@ -279,6 +281,7 @@ def search_products(uuid):
                         if product !=None:
                             product['_id'] = str(product['_id'])
                             product['price'] = str(product['price']) + " €"
+                            del product['stock']
                             return Response(json.dumps(product, indent=4, ensure_ascii=False), status=200, mimetype='application/json')
                         else:
                             return Response('No product found with that id',status=500,mimetype='application/json')
