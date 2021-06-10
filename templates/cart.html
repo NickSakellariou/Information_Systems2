@@ -1,0 +1,26 @@
+{% extends "main.html" %}
+
+{% block content %}
+    <div>
+        <h2>Cart</h2>
+        {% if cart_products|length>0 %}
+            {% set ns = namespace(total_price = 0, i = 1) %}
+            {% for product in cart_products %}
+                <h3>Product no. {{ ns.i }}</h3>
+                <div>
+                    <p>_id : {{ product['_id'] }}</p>
+                    <p>Name : {{ product['name'] }}</p>
+                    <p>Price : {{ product['price'] }} € </p>
+                    <p>Description : {{ product['description'] }}</p>
+                    <p>Category : {{ product['category'] }}</p>
+                    <p>Quantity : {{ product['quantity'] }}</p>
+                    {% set ns.total_price = ns.total_price + product['quantity']*product['price'] %}
+                    {% set ns.i = ns.i + 1 %}
+                </div>
+            {% endfor %}
+            <h2>Total price of cart : {{ ns.total_price }} € </h2>
+        {% else %}
+            <p>You have not added anything to cart yet</p>
+        {% endif %}
+    </div>
+{% endblock %}

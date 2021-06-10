@@ -1,0 +1,21 @@
+{% extends "main.html" %}
+
+{% block content %}
+    <div>
+        <form method="post">
+            <h3>Search products by name :</h3>
+            <div class="form-group">
+                <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+            </div>
+            <h3>Or search products by category :</h3>
+            <div class="form-group">
+                <input type="text" class="form-control" id="category" name="category" placeholder="Category">
+            </div>
+            <h3>Or search product by id :</h3>
+            <div class="form-group">
+                <input type="text" class="form-control" id="id" name="id" placeholder="Id">
+            </div>
+            <button type="submit" class="btn">Search</button>
+        </form>
+    </div>
+{% endblock %}

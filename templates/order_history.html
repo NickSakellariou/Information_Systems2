@@ -1,0 +1,20 @@
+{% extends "main.html" %}
+
+{% block content %}
+    <div>
+        <h2>Order history</h2>
+        {% if order_history|length>0 %}
+            {% set ns = namespace(i = 1) %}
+            {% for product in order_history %}
+                <h3>Order no. {{ ns.i }}</h3>
+                <div>
+                    <p>{{ product }}</p>
+                </div>
+                {% set ns.i = ns.i + 1 %}
+                <br>
+            {% endfor %}
+        {% else %}        
+            <h3>You have not made any orders yet</h3>
+        {% endif %}
+    </div>
+{% endblock %}
